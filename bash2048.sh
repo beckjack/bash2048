@@ -12,15 +12,15 @@ declare ESC=$'\e'    # escape byte
 declare header="Bash 2048 v1.1 (https://github.com/mydzor/bash2048)"
 
 #default config
-declare -i board_size=4
+declare -i board_size=10
 declare -i target=2048
 
 #for colorizing numbers
 declare -a colors
-colors[2]=33         # yellow text
-colors[4]=32         # green text
-colors[8]=34         # blue text
-colors[16]=36        # cyan text
+colors[2]=35         # yellow text
+colors[4]=35         # green text
+colors[8]=35         # blue text
+colors[16]=35        # cyan text
 colors[32]=35        # purple text
 colors[64]="33m\033[7"        # yellow background
 colors[128]="32m\033[7"       # green background
@@ -58,7 +58,7 @@ function print_board {
   printf "$header pieces=$pieces target=$target score=$score\n"
   printf "Board status:\n" >&3
   printf "\n"
-  printf '/------'
+  printf '\------'
   for l in $(_seq 1 $index_max); do
     printf '|------'
   done
@@ -225,11 +225,11 @@ function key_react {
 
 function end_game {
   print_board
-  printf "GAME OVER\n"
-  printf "Your score: $score\n"
+  printf "YOU LOOSER =))\n"
+  printf "Твое очко: $score\n"
   stty echo
   let $1 && {
-    printf "Congratulations you have achieved $target\n"
+    printf "Congratulations!!!!!!  =)) $target\n"
     exit 0
   }
   printf "You have lost, better luck next time.\033[0m\n"
